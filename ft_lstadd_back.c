@@ -6,17 +6,24 @@
 /*   By: shurtado <shurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:17:54 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/26 15:21:33 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:05:30 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(tlist **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	while (*lst->next != NULL)
+	t_list	*last;
+
+	if (!*lst)
 	{
-		*lst = *lst->next;
+		*lst = new;
+		return ;
 	}
-	lst->next = new;
+	else
+	{
+		last = ft_lstlast(*(lst));
+		last->next = new;
+	}
 }

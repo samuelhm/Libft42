@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:35:34 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/26 15:46:02 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:12:18 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*next_item;
-
-	if (*lst->next)
+	if ((*lst)->next)
 	{
-		next_item = *lst->next;
-		ft_lstclear(next_item, del);
+		(*lst) = (*lst)->next;
+		ft_lstclear(&(*lst), del);
 	}
 	del(*lst);
 	free(*lst);

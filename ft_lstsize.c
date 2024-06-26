@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:38:10 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/26 13:43:30 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:54:52 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_lstsize(t_list *lst)
 	result = 0;
 	if (lst)
 		result++;
-	while (lst->new)
+	while (lst->next)
 	{
 		result++;
-		lst = lst->new;
+		lst = lst->next;
 	}
 	return (result);
 }
