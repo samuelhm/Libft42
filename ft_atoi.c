@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 
 	sign = 0;
 	num = 0;
-	while (*str <= 32)
+	while (*str <= 32 && *str != 27)
 		str++;
 	if (*str == 43 || *str == 45)
 	{

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	getsize(int n);
+int	getsizen(int n);
 
 char	*ft_itoa(int n)
 {
@@ -24,7 +24,7 @@ char	*ft_itoa(int n)
 		sign = 1;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	len = getsize(n);
+	len = getsizen(n);
 	txtnumber = malloc(sizeof(char) * (len + 1));
 	if (!txtnumber)
 		return (NULL);
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 	return (txtnumber);
 }
 
-int	getsize(int n)
+int	getsizen(int n)
 {
 	int	i;
 
