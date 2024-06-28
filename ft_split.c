@@ -12,55 +12,67 @@
 
 #include "libft.h"
 
-void	assign(int *size, char **arr, char *split, char const *s);
-
-char	**freall(char **arr)
+char	*get_first_word(char const *s, char c)
 {
-	free(arr[0]);
-	free(arr[1]);
-	free(arr);
-	return (NULL);
+	char	*tmp;
+	char	*del2;
+
+	tmp = ft_strdup(s);
+	del2 = ft_strchr(tmp, c);
+	*del2 = 0;
+	return (tmp);
 }
 
-void	cpy(char **arr, int *size, char const *s, char *split)
+char	**not_found(char const *s)
 {
-	ft_strlcpy(arr[0], s, size[0]);
-	ft_strlcpy(arr[1], split + 1, size[1]);
+	char	**arr;
+
+	arr = malloc(sizeof(char *) * 2);
+	if (!arr)
+		return (NULL);
+	arr[0] = ft_strdup(s);
+	if (!arr[0])
+	{
+		free(arr);
+		return (NULL);
+	}
+	arr[1] = NULL;
+	return (arr);
+}
+
+char	**found(char const *s, char *del)
+{
+	char	**arr;
+
+	arr = malloc(sizeof(char *) * 3);
+	if (!arr)
+		return (NULL);
+	arr[0] = get_first_word(s, *del);
+	if (!arr[0])
+	{
+		free(arr);
+		return (NULL);
+	}
+	arr[1] = ft_strdup(del + 1);
+	if (!arr[1])
+	{
+		free(arr[0]);
+		free(arr);
+		return (NULL);
+	}
 	arr[2] = NULL;
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**arr;
-	char	*split;
-	int		size[2];
+	char	*del;
 
 	if (!s)
 		return (NULL);
-	split = ft_strchr(s, c);
-	if (!split)
-	{
-		arr = malloc(sizeof(char *) * 2);
-		if (!arr)
-			return (NULL);
-		arr[0] = ft_strdup(s);
-		arr[1] = NULL;
-		return (arr);
-	}
-	arr = malloc (sizeof(char *) * 3);
-	if (!arr)
-		return (NULL);
-	assign(size, arr, split, s);
-	if (!arr[0] || !arr[1])
-		return (freall(arr));
-	cpy(arr, size, s, split);
-	return (arr);
-}
-
-void	assign(int *size, char **arr, char *split, char const *s)
-{
-	size[1] = ft_strlen(split + 1) + 1;
-	size[0] = ((ft_strlen(s) + 1) - size[1]);
-	arr[0] = malloc (sizeof(char) * size[0]);
-	arr[1] = malloc (sizeof(char) * size[1]);
+	del = ft_strchr(s, c);
+	if (!del)
+		return (not_found(s));
+	else
+		return (found(s, del));
 }
