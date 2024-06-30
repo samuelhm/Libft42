@@ -12,29 +12,7 @@
 
 #include "libft.h"
 
-int	getsize(int n);
-
 void	ft_putnbr_fd(int n, int fd)
 {
-	write(fd, ft_itoa(n), getsize(n));
-}
-
-int	getsize(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		i++;
-		n = -n;
-	}
-	while (n)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+	ft_putstr_fd(ft_itoa(n), fd);
 }
