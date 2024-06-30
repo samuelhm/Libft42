@@ -17,14 +17,14 @@ int	ft_atoi(const char *str)
 	int	sign;
 	int	num;
 
-	sign = 0;
+	sign = 1;
 	num = 0;
-	while (*str <= 32 && *str != 27)
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	if (*str == 43 || *str == 45)
+	if (*str == '+' || *str == '-')
 	{
-		if (*str == 45)
-			sign = 1;
+		if (*str == '-')
+			sign = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
@@ -32,7 +32,5 @@ int	ft_atoi(const char *str)
 		num = (num * 10) + (*str - '0');
 		str++;
 	}
-	if (sign > 0)
-		num = -num;
-	return (num);
+	return (num * sign);
 }

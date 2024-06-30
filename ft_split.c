@@ -32,6 +32,7 @@ char	**ft_split(char const *s, char c)
 	{
 		arr = malloc(sizeof(char *));
 		arr[0] = NULL;
+		free(sclean);
 		return (arr);
 	}
 	arr = malloc((delimiter + 2) * sizeof(char *));
