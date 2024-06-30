@@ -19,20 +19,23 @@ char	*ft_itoa(int n)
 	char	*txtnumber;
 	int		len;
 	int		sign;
+	long	num;
 
+	num = n;
+	sign = 0;
 	if (n < 0)
 		sign = 1;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	len = getsizen(n);
 	txtnumber = malloc(sizeof(char) * (len + 1));
 	if (!txtnumber)
 		return (NULL);
-	txtnumber[len] = 0;
+	txtnumber[len] = '\0';
+	if (sign)
+		num = -num;
 	while (len > 0)
 	{
-		txtnumber[--len] = (n % 10) + '0';
-		n /= 10;
+		txtnumber[--len] = (num % 10) + '0';
+		num /= 10;
 	}
 	if (sign)
 		txtnumber[0] = '-';

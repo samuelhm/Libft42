@@ -11,21 +11,34 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int		get_total_deli(char const *s, char c);
 void	alloc(char **arr, char const *s, char c, int deli);
 char	*get_word(char const *s, int pos, char c, int i);
+char	*clean(char const *s, char del, int i, int j);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		delimiter;
+	char	*sclean;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
-	delimiter = get_total_deli(s, c);
+	sclean = clean(s, c, 0, 0);
+	delimiter = get_total_deli(sclean, c);
+	if (*sclean == c || *sclean == '\0')
+	{
+		arr = malloc(sizeof(char *));
+		arr[0] = NULL;
+		return (arr);
+	}
 	arr = malloc((delimiter + 2) * sizeof(char *));
-	alloc(arr, s, c, delimiter);
+	if (!arr)
+		return (NULL);
+	alloc(arr, sclean, c, delimiter);
+	free(sclean);
 	return (arr);
 }
 
@@ -82,4 +95,25 @@ void	alloc(char **arr, char const *s, char c, int deli)
 		i++;
 	}
 	arr[i] = NULL;
+}
+
+char	*clean(char const *s, char del, int i, int j)
+{
+	char	*sclean;
+	int		lenght;
+
+	lenght = ft_strlen(s);
+	sclean = ft_strtrim(s, &del);
+	while (i < lenght)
+	{
+		sclean[j++] = sclean [i++];
+		if (sclean[i] == del)
+		{
+			sclean[j++] = sclean [i++];
+			while (sclean[i] == del)
+				i++;
+		}
+	}
+	sclean[j] = '\0';
+	return (sclean);
 }
