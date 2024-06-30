@@ -12,67 +12,74 @@
 
 #include "libft.h"
 
-char	*get_first_word(char const *s, char c)
-{
-	char	*tmp;
-	char	*del2;
-
-	tmp = ft_strdup(s);
-	del2 = ft_strchr(tmp, c);
-	*del2 = 0;
-	return (tmp);
-}
-
-char	**not_found(char const *s)
-{
-	char	**arr;
-
-	arr = malloc(sizeof(char *) * 2);
-	if (!arr)
-		return (NULL);
-	arr[0] = ft_strdup(s);
-	if (!arr[0])
-	{
-		free(arr);
-		return (NULL);
-	}
-	arr[1] = NULL;
-	return (arr);
-}
-
-char	**found(char const *s, char *del)
-{
-	char	**arr;
-
-	arr = malloc(sizeof(char *) * 3);
-	if (!arr)
-		return (NULL);
-	arr[0] = get_first_word(s, *del);
-	if (!arr[0])
-	{
-		free(arr);
-		return (NULL);
-	}
-	arr[1] = ft_strdup(del + 1);
-	if (!arr[1])
-	{
-		free(arr[0]);
-		free(arr);
-		return (NULL);
-	}
-	arr[2] = NULL;
-	return (arr);
-}
+int		get_total_deli(char const *s, char c);
+void	alloc(char **arr, char const *s, char c, int deli);
+char	*get_word(char const *s, int pos, char c, int i);
 
 char	**ft_split(char const *s, char c)
 {
-	char	*del;
+	char	**arr;
+	int		delimiter;
 
-	if (!s)
+	if (!s || !c)
 		return (NULL);
-	del = ft_strchr(s, c);
-	if (!del)
-		return (not_found(s));
-	else
-		return (found(s, del));
+	delimiter = get_total_deli(s, c);
+	arr = malloc((delimiter + 2) * sizeof(char *));
+	alloc(arr, s, c, delimiter);
+	return (arr);
+}
+
+int	get_total_deli(char const *s, char c)
+{
+	int	result;
+
+	result = 0;
+	while (*s)
+	{
+		if (*s == c)
+			result++;
+		s++;
+	}
+	return (result);
+}
+
+char	*get_word(char const *s, int pos, char c, int i)
+{
+	int	num;
+	int	start;
+	int	word;
+
+	num = 0;
+	start = 0;
+	word = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			num++;
+			if (num == pos)
+				return (ft_substr(s, start, word));
+			start = i + 1;
+			word = 0;
+		}
+		else
+			word++;
+		i++;
+	}
+	if (num + 1 == pos)
+		return (ft_substr(s, start, word));
+	return (NULL);
+}
+
+void	alloc(char **arr, char const *s, char c, int deli)
+{
+	int	i;
+
+	i = 0;
+	while (i <= deli)
+	{
+		arr[i] = get_word(s, i + 1, c, 0);
+		i++;
+	}
+	arr[i] = NULL;
 }
