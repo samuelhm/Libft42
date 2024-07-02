@@ -6,17 +6,16 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:12:00 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/25 00:51:37 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:47:31 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int		get_total_deli(char const *s, char c);
-void	alloc(char **arr, char const *s, char c, int deli);
-char	*get_word(char const *s, int pos, char c, int i);
-char	*clean(char const *s, char del, int i, int j);
+static int		get_total_deli(char const *s, char c);
+static void	alloc(char **arr, char const *s, char c, int deli);
+static char	*get_word(char const *s, int pos, char c, int i);
+static char	*clean(char const *s, char del, int i, int j);
 
 char	**ft_split(char const *s, char c)
 {
@@ -34,7 +33,7 @@ char	**ft_split(char const *s, char c)
 		arr[0] = NULL;
 		free(sclean);
 		return (arr);
-	}
+		}
 	arr = malloc((delimiter + 2) * sizeof(char *));
 	if (!arr)
 		return (NULL);

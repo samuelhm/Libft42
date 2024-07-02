@@ -11,7 +11,7 @@ NAME = libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) libft.h
 	ar rcs $(NAME) $(OBJS)
 	$(work)
 %.o: %.c
