@@ -6,11 +6,9 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:07:21 by shurtado          #+#    #+#             */
-/*   Updated: 2024/01/10 21:41:14 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:43:19 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalpha(int c)
 {

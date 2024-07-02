@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:12:00 by shurtado          #+#    #+#             */
-/*   Updated: 2024/07/02 18:47:31 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:48:06 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,22 @@ char	*get_word(char const *s, int pos, char c, int i)
 void	alloc(char **arr, char const *s, char c, int deli)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (i <= deli)
 	{
 		arr[i] = get_word(s, i + 1, c, 0);
+		if (!arr[i])
+		{
+			while (j < i)
+			{
+				free(arr[j]);
+				j++;
+			}
+			break;
+		}
 		i++;
 	}
 	arr[i] = NULL;

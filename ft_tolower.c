@@ -6,11 +6,9 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:32:43 by shurtado          #+#    #+#             */
-/*   Updated: 2024/01/11 19:16:46 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:50:21 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_tolower(int c)
 {

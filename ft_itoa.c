@@ -6,13 +6,13 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:12:23 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/25 00:19:12 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:44:02 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	getsizen(int n);
+static int	getsizen(int n);
 
 char	*ft_itoa(int n)
 {

@@ -6,11 +6,9 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:32:08 by shurtado          #+#    #+#             */
-/*   Updated: 2024/01/11 17:02:43 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:43:43 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isprint(int c)
 {
