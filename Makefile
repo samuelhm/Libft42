@@ -18,6 +18,7 @@ $(NAME): $(OBJS) libft.h
 	gcc $(CFLAGS) -c $< -o $@
 clean:
 	rm -f $(OBJS) $(BONUSOBJS)
+	rm -f bonus
 	$(deleting)
 fclean: clean
 	rm -f $(NAME)
@@ -28,8 +29,9 @@ all: $(NAME)
 
 bonus: $(OBJS) $(BONUSOBJS)
 	ar rcs $(NAME) $(OBJS) $(BONUSOBJS)
+	@touch bonus
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 define work
 
