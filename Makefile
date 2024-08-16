@@ -3,6 +3,11 @@ SRC += ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_touppe
 SRC +=ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRC += ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstdelone.c
 SRC += get_next_line.c
+
+LIBFTPRINTF_DIR = ft_printf
+
+LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libprintf.a
+
 OBJS = $(SRC:.c=.o)
 
 NAME = libft.a
@@ -17,13 +22,19 @@ $(NAME): $(OBJS) libft.h
 clean:
 	rm -f $(OBJS) $(BONUSOBJS)
 	rm -f bonus
+	@$(MAKE) -C $(LIBFTPRINTF_DIR) clean
 	$(deleting)
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
+
 re: fclean all
 	$(weee)
 
-all: $(NAME)
+all: $(LIBFTPRINTF) $(NAME)
+
+$(LIBFTPRINTF):
+	@$(MAKE) -C $(LIBFTPRINTF_DIR)
 
 .PHONY: all clean fclean re
 
