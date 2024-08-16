@@ -29,11 +29,10 @@ $(LIBFTPRINTF):
 clean:
 	rm -f $(OBJS) $(BONUSOBJS)
 	rm -f bonus
-	@$(MAKE) -C $(LIBFTPRINTF_DIR) clean
+	@$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
 	$(deleting)
 fclean: clean
 	rm -f $(NAME)
-	@$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
 
 re: fclean all
 	$(weee)
