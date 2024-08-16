@@ -6,16 +6,21 @@
 /*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:17:15 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/26 18:54:51 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/16 12:23:15 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
+
 # include <stdlib.h>
 # include <stddef.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -66,5 +71,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 int		ft_lstsize(t_list *lst);
+char	*get_next_line(int fd);
 
 #endif 
