@@ -6,7 +6,7 @@ SRC += get_next_line.c
 
 LIBFTPRINTF_DIR = Ft_printf
 
-LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libprintf.a
+LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 
 OBJS = $(SRC:.c=.o)
 
@@ -14,9 +14,16 @@ NAME = libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(OBJS) libft.h
+all: $(LIBFTPRINTF) $(NAME)
+	
+$(NAME): $(OBJS) $(LIBFTPRINTF) libft.h
 	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(LIBFTPRINTF)
 	$(work)
+
+$(LIBFTPRINTF):
+	@$(MAKE) -C $(LIBFTPRINTF_DIR)
+
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@
 clean:
@@ -31,10 +38,6 @@ fclean: clean
 re: fclean all
 	$(weee)
 
-all: $(LIBFTPRINTF) $(NAME)
-
-$(LIBFTPRINTF):
-	@$(MAKE) -C $(LIBFTPRINTF_DIR)
 
 .PHONY: all clean fclean re
 
