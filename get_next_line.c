@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shurtado <shurtado@student.42barcelona.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 04:55:46 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/08 08:32:08 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/16 12:25:24 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 
 static char	*read_line(int fd, char *buffer, char *save)
 {
