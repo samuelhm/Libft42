@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:17:15 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/16 12:23:15 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/17 11:10:19 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 int		ft_lstsize(t_list *lst);
 char	*get_next_line(int fd);
+int		ft_printf(const char *str, ...);
 
-#endif 
+#endif
