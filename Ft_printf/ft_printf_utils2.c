@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.fr  +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:25:05 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/09 11:04:56 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/17 11:41:28 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthxnbr(unsigned int nb, int upper)
+int	ft_puthxnbrp(unsigned int nb, int upper)
 {
 	char	*hx;
 	int		result;
@@ -23,12 +23,12 @@ int	ft_puthxnbr(unsigned int nb, int upper)
 	else
 		hx = "0123456789ABCDEF";
 	if (nb > 15)
-		result += ft_puthxnbr((nb / 16), upper);
-	result += ft_putchar(hx[nb % 16]);
+		result += ft_puthxnbrp((nb / 16), upper);
+	result += ft_putcharp(hx[nb % 16]);
 	return (result);
 }
 
-int	ft_putptr(unsigned long nb)
+int	ft_putptrp(unsigned long nb)
 {
 	char	*hx;
 	int		result;
@@ -39,8 +39,8 @@ int	ft_putptr(unsigned long nb)
 		return (write(1, "0", 1));
 	if (nb > 15)
 	{
-		result = ft_putptr(nb / 16);
+		result = ft_putptrp(nb / 16);
 	}
-	result += ft_putchar(hx[nb % 16]);
+	result += ft_putcharp(hx[nb % 16]);
 	return (result);
 }

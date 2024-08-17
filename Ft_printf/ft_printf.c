@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:13:51 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/09 10:52:41 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/17 11:39:44 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ int	printarg(char carg, va_list args)
 	unsigned long	p;
 
 	if (carg == 'c')
-		return (ft_putchar(va_arg(args, int)));
+		return (ft_putcharp(va_arg(args, int)));
 	else if (carg == 's')
-		return (ft_putstr(va_arg(args, const char *)));
+		return (ft_putstrp(va_arg(args, const char *)));
 	else if (carg == 'd' || carg == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_putnbrp(va_arg(args, int)));
 	else if (carg == 'u')
-		return (ft_putunbr(va_arg(args, unsigned int)));
+		return (ft_putunbrp(va_arg(args, unsigned int)));
 	else if (carg == 'x')
-		return (ft_puthxnbr(va_arg(args, unsigned int), 1));
+		return (ft_puthxnbrp(va_arg(args, unsigned int), 1));
 	else if (carg == 'X')
-		return (ft_puthxnbr(va_arg(args, unsigned int), 0));
+		return (ft_puthxnbrp(va_arg(args, unsigned int), 0));
 	else if (carg == 'p')
 	{
 		p = va_arg(args, unsigned long);
 		if (p)
-			return (write(1, "0x", 2) + ft_putptr(p));
+			return (write(1, "0x", 2) + ft_putptrp(p));
 		else
 			return (write(1, "(nil)", 5));
 	}
