@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:32:31 by shurtado          #+#    #+#             */
-/*   Updated: 2024/01/11 17:03:19 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:39:31 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	unsigned int	i;
-	unsigned int	srlen;
+	size_t	i;
+	size_t	srlen;
 
 	i = 0;
 	srlen = ft_strlen(src);

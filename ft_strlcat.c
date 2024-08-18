@@ -14,9 +14,9 @@
 
 int	ft_strlcat(char *dest, const char *src, size_t n)
 {
-	unsigned int	dslen;
-	unsigned int	srlen;
-	unsigned int	i;
+	size_t	dslen;
+	size_t	srlen;
+	size_t	i;
 
 	dslen = ft_strlen(dest);
 	srlen = ft_strlen(src);
