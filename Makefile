@@ -48,8 +48,10 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/ft_printf
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@echo "\033[1;31mlibft objects removed\033[0m"
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		rm -rf $(OBJ_DIR); \
+		echo "\033[1;31mlibft objects removed\033[0m"; \
+	fi
 
 
 fclean: clean
