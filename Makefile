@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 14:45:13 by shurtado          #+#    #+#              #
-#    Updated: 2024/08/23 15:12:47 by shurtado         ###   ########.fr        #
+#    Updated: 2024/08/23 15:21:46 by shurtado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJS) Makefile
 	@ar rcs $(TARGET) $(OBJS)
-	@echo "\033[0;32mBinary $@ created\033[0m"
+	@echo "\033[0;36mBinary $@ created\033[0m"
 
 # -MMD to include header dependences to .d file and run $(OBJ_DIR) if not exist
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
