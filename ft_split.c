@@ -3,128 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:12:00 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/16 14:03:18 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:41:11 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_total_deli(char const *s, char c);
-static void	alloc(char **arr, char const *s, char c, int deli);
-static char	*get_word(char const *s, int pos, char c, int i);
-static char	*clean(char const *s, char del, int i, int j);
-
-char	**ft_split(char const *s, char c)
+char	**ft_free_all(char **split, size_t i)
 {
-	char	**arr;
-	int		delimiter;
-	char	*sclean;
-
-	if (!s)
-		return (NULL);
-	sclean = clean(s, c, 0, 0);
-	delimiter = get_total_deli(sclean, c);
-	if (*sclean == c || *sclean == '\0')
-	{
-		arr = malloc(sizeof(char *));
-		arr[0] = NULL;
-		free(sclean);
-		return (arr);
-	}
-	arr = malloc((delimiter + 2) * sizeof(char *));
-	if (!arr)
-		return (NULL);
-	alloc(arr, sclean, c, delimiter);
-	free(sclean);
-	return (arr);
-}
-
-int	get_total_deli(char const *s, char c)
-{
-	int	result;
-
-	result = 0;
-	while (*s)
-	{
-		if (*s == c)
-			result++;
-		s++;
-	}
-	return (result);
-}
-
-char	*get_word(char const *s, int pos, char c, int i)
-{
-	int	num;
-	int	start;
-	int	word;
-
-	num = 0;
-	start = 0;
-	word = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-		{
-			num++;
-			if (num == pos)
-				return (ft_substr(s, start, word));
-			start = i + 1;
-			word = 0;
-		}
-		else
-			word++;
-		i++;
-	}
-	if (num + 1 == pos)
-		return (ft_substr(s, start, word));
+	while (i-- > 0)
+		free(split[i]);
+	free(split);
 	return (NULL);
 }
 
-void	alloc(char **arr, char const *s, char c, int deli)
+static int	ft_countc(char const *s, char c)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	int		cnt;
 
-	i = 0;
-	j = 0;
-	while (i <= deli)
+	i = 1;
+	cnt = 0;
+	if (s[0] == '\0')
+		return (0);
+	if (s[0] != c)
+		cnt++;
+	while (s[i] != '\0')
 	{
-		arr[i] = get_word(s, i + 1, c, 0);
-		if (!arr[i])
-		{
-			while (j < i)
-			{
-				free(arr[j]);
-				j++;
-			}
-			break ;
-		}
+		if (s[i] == c && s[i - 1] != c)
+			cnt++;
+		if (s[i] != c && s[i - 1] == c)
+			cnt++;
 		i++;
 	}
-	arr[i] = NULL;
+	if (s[i] == c && cnt != 1)
+		return (cnt / 2);
+	else
+		cnt++;
+	return (cnt / 2);
 }
 
-char	*clean(char const *s, char del, int i, int j)
+static size_t	ft_nextcin(char const *s, char c)
 {
-	char	*sclean;
-	int		lenght;
+	size_t	i;
 
-	lenght = ft_strlen(s);
-	sclean = ft_strtrim(s, &del);
-	while (i < lenght)
+	i = 0;
+	while (s[i] != c && s[i])
+		i++;
+	return (i);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	char	**split;
+	size_t	len;
+	size_t	len_sub;
+
+	len = ft_countc(s, c);
+	split = (char **)malloc(sizeof(char *) * (len + 1));
+	if (split == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len && *s)
 	{
-		sclean[j++] = sclean [i++];
-		if (sclean[i] == del)
-		{
-			sclean[j++] = sclean [i++];
-			while (sclean[i] == del)
-				i++;
-		}
+		while (*s == c)
+			s++;
+		len_sub = ft_nextcin(s, c);
+		split[i] = ft_substr(s, 0, len_sub);
+		if (split[i] == NULL)
+			return (ft_free_all(split, i));
+		s += len_sub;
+		i++;
 	}
-	sclean[j] = '\0';
-	return (sclean);
+	split[i] = NULL;
+	return (split);
 }
