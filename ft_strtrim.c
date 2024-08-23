@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:11:44 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/24 22:13:41 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:39:55 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	int		i;
-	int		j;
+	size_t	end;
+	size_t	start;
 
-	if (!s1 || !set)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s1);
-	while (ft_strchr(set, *(s1 + i)) && *s1)
-		i++;
-	while (j > 0 && ft_strchr(set, *(s1 + j)))
-		j--;
-	if (j == 0)
-		return (ft_strdup(""));
-	str = malloc(sizeof(char) * (j - i + 2));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, (s1 + i), j - i + 2);
-	return (str);
+	if (s1 == 0 || set == 0)
+		return (0);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > 0 && ft_strchr(set, s1[end]))
+		end--;
+	return (ft_substr(s1, start, end - start + 1));
 }
