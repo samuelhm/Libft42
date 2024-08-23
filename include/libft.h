@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:17:15 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/18 20:19:13 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:02:41 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "./Ft_printf/ft_printf.h"
+# include "../src/ft_printf/ft_printf.h"
 
 typedef struct s_list
 {
