@@ -6,7 +6,7 @@
 #    By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 14:45:13 by shurtado          #+#    #+#              #
-#    Updated: 2024/08/23 15:27:28 by shurtado         ###   ########.fr        #
+#    Updated: 2024/08/23 15:48:43 by shurtado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,15 @@ $(OBJ_DIR):
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 		rm -rf $(OBJ_DIR); \
-		echo "\033[1;31mlibft objects removed\033[0m"; \
+		echo "\033[1;31mlibft objects deleted\033[0m"; \
 	fi
 
 
 fclean: clean
-	@rm -f $(TARGET)
-	@echo "\033[1;31mlibft.a removed\033[0m"
+	@if [ -f "$(TARGET)" ]; then \
+		rm -f $(TARGET); \
+		echo "\033[1;31m$(TARGET) deleted\033[0m"; \
+	fi
 
 re: fclean all
 
