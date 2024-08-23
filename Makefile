@@ -6,7 +6,7 @@
 #    By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 14:45:13 by shurtado          #+#    #+#              #
-#    Updated: 2024/08/23 15:21:46 by shurtado         ###   ########.fr        #
+#    Updated: 2024/08/23 15:27:28 by shurtado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJS) Makefile
 	@ar rcs $(TARGET) $(OBJS)
-	@echo "\033[0;36mBinary $@ created\033[0m"
+	@echo "\033[1;36mBinary $@ created\033[0m"
 
 # -MMD to include header dependences to .d file and run $(OBJ_DIR) if not exist
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
@@ -49,12 +49,12 @@ $(OBJ_DIR):
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "\033[0;31mlibft objects removed\033[0m"
+	@echo "\033[1;31mlibft objects removed\033[0m"
 
 
 fclean: clean
 	@rm -f $(TARGET)
-	@echo "\033[0;31mlibft.a removed\033[0m"
+	@echo "\033[1;31mlibft.a removed\033[0m"
 
 re: fclean all
 
