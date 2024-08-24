@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:17:15 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/23 15:02:41 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:38:56 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ int		ft_lstsize(t_list *lst);
 char	*get_next_line(int fd);
 char	*ft_strfill_fd(int fd);
 void	ft_free_2d_array(void **v);
+int		is_integer(const char *str);
 #endif
