@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 18:09:54 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/24 18:40:23 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/08/24 19:04:02 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_integer(const char *str, int negative);
 
-int	is_integer(const char *str)
+int	ft_is_integer(const char *str)
 {
 	int	negative;
 	int	i;
