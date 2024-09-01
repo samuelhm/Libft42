@@ -27,7 +27,7 @@ SRCS_FILES += ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft
 SRCS_FILES += ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRCS_FILES += ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstdelone.c
 SRCS_FILES += get_next_line.c ft_strfill_fd.c ft_free_2d_array.c ft_is_integer.c
-SRCS_FILES += ft_printf/ft_printf.c ft_printf/ft_printf_utils.c ft_printf/ft_printf_utils2.c ft_charjoin.c
+SRCS_FILES += ft_printf/ft_printf.c ft_printf/ft_printf_utils.c ft_printf/ft_printf_utils2.c ft_charjoin.c ft_lstremove.c
 SRCS = $(addprefix $(SRC_DIR)/,$(SRCS_FILES))
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 

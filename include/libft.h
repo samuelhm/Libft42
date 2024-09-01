@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:17:15 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/30 19:14:57 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/09/01 19:32:25 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,6 @@ char	*ft_strfill_fd(int fd);
 void	ft_free_2d_array(void **v);
 int		ft_is_integer(const char *str);
 char	*ft_charjoin(char *str, char c);
+int		ft_lstremove(t_list **lst, t_list *node, void (*del)(void *));
+
 #endif
