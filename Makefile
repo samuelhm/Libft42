@@ -6,7 +6,7 @@
 #    By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 14:45:13 by shurtado          #+#    #+#              #
-#    Updated: 2024/08/23 15:48:43 by shurtado         ###   ########.fr        #
+#    Updated: 2024/10/08 20:33:34 by shurtado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INCLUDES = -I$(INC_DIR)
 # Folders
 SRC_DIR = src
 OBJ_DIR = obj
-INC_DIR = include
+INC_DIR = inc
 
 # Sources
 SRCS_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strlcat.c ft_strlcpy.c
