@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:32:28 by shurtado          #+#    #+#             */
-/*   Updated: 2024/01/11 19:07:50 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:29:32 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_strlcat(char *dest, const char *src, size_t n)
 	size_t	srlen;
 	size_t	i;
 
+	if (!n)
+		return (0);
 	dslen = ft_strlen(dest);
 	srlen = ft_strlen(src);
 	i = 0;

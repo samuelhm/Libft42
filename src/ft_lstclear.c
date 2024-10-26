@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shurtado <shurtado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:35:34 by shurtado          #+#    #+#             */
-/*   Updated: 2024/06/26 16:39:28 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:09:12 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
 
+	if (!lst || !*lst)
+		return ;
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		del((*lst)->content);
+		if (del != NULL)
+			del((*lst)->content);
 		free(*lst);
 		*lst = tmp;
 	}

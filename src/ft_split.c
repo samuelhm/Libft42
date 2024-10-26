@@ -6,7 +6,7 @@
 /*   By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:12:00 by shurtado          #+#    #+#             */
-/*   Updated: 2024/08/23 14:41:11 by shurtado         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:12:41 by shurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	**ft_split(char const *s, char c)
 	size_t	len;
 	size_t	len_sub;
 
+	if (!s)
+		return (NULL);
 	len = ft_countc(s, c);
 	split = (char **)malloc(sizeof(char *) * (len + 1));
 	if (split == NULL)
