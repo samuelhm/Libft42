@@ -6,13 +6,14 @@
 #    By: shurtado <shurtado@student.42barcelona.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 14:45:13 by shurtado          #+#    #+#              #
-#    Updated: 2024/10/08 20:33:34 by shurtado         ###   ########.fr        #
+#    Updated: 2024/10/26 17:09:27 by shurtado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config
-CC = cc
+CC = gcc
 TARGET = libft.a
+SO = libft.so
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INC_DIR)
 
@@ -32,6 +33,11 @@ SRCS = $(addprefix $(SRC_DIR)/,$(SRCS_FILES))
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 all: $(TARGET)
+
+so: $(SO)
+
+$(SO): $(OBJS) Makefile
+	$(CC) -nostartfiles -shared -o $(SO) $(OBJS)
 
 $(TARGET): $(OBJS) Makefile
 	@ar rcs $(TARGET) $(OBJS)
@@ -57,6 +63,7 @@ clean:
 fclean: clean
 	@if [ -f "$(TARGET)" ]; then \
 		rm -f $(TARGET); \
+		rm -f $(SO); \
 		echo "\033[1;31m$(TARGET) deleted\033[0m"; \
 	fi
 
